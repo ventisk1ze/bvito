@@ -7,40 +7,36 @@
 			<p class="p-main">Мой профиль</p>
 			<div class="desc">
 				<div class="p-name">
-					Имя
+					Логин
 				</div>
 				<div class="p-desc">
-					{{ obj.name }}
+					{{ obj.username }}
 				</div>
 			</div>
 			<div class="desc">
 				<div class="p-name">
-				Дата рождения
+				Имя
 				</div>
 				<div class="p-desc">
-					{{ obj.dob }}
+					{{ obj.first_name }}
 				</div>
 			</div>
 			<div class="desc">
 				<div class="p-name">
-				Почта
+				Фамилия
+				</div>
+				<div class="p-desc">
+					{{ obj.last_name }}
+				</div>
+			</div>
+			<div class="desc">
+				<div class="p-name">
+				 Email
 				</div>
 				<div class="p-desc">
 					{{ obj.email }}
 				</div>
 			</div>
-			<div class="desc">
-				<div class="p-name">
-				 Обо мне
-				</div>
-				<div class="p-desc">
-					{{ obj.description }}
-				</div>
-			</div>
-			  <form action="{% url 'ProfileUpdate' %}">
-					<button class="justify-content-center btn btn-primary" type="submit">Изменить профиль</button>
-				</form>
-		</div>
 	</div>
 </div>
 

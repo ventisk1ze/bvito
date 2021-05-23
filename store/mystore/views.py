@@ -3,13 +3,13 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
-from .forms import AdvertAddForm, sortChoice
+from .forms import AdvertAddForm, sortChoice, RegisterForm
 from .models import Advert
 from django.db.models import Q
 
 def registration(request):
     if request.method == 'POST':
-        form = UserCreationForm()
+        form = RegisterForm(request.POST)
         if form.is_valid():
             user = form.save()
             login(request, user)
@@ -17,11 +17,11 @@ def registration(request):
     else:
         if request.user.is_authenticated:
             logout(request)
-        form = UserCreationForm()
+        form = RegisterForm()
     context = {'form':form,}
     return render(request, "register.html",context)
 
-def login(request):
+def loginView(request):
 	if request.method == 'POST':
 		form = AuthenticationForm(data = request.POST)
 		if form.is_valid():
@@ -36,7 +36,7 @@ def login(request):
 	return render(request, 'login.html', context)
 
 @login_required(login_url = 'login')
-def logout(request):
+def logOut(request):
 	if request.method == 'POST':
 		logout(request)
 	return redirect('home')
@@ -75,7 +75,7 @@ def home(request):
     return render(request, "home.html")
 
 @login_required(login_url = 'login')
-def vacancyListView(request):
+def advertList(request):
 	searchQueryNavbar = request.GET.get('search_navbar', '')
 	searchQueryVLpage = request.GET.get('search_vlpage', '')
 
@@ -90,10 +90,10 @@ def vacancyListView(request):
 			selected = form.cleaned_data.get("choice")
 			if selected == 'viewsAmount':
 				queryset = Advert.objects.filter(Q(name__icontains = searchQuery) | Q(salary__icontains = searchQuery) | Q(competences__icontains = searchQuery)).order_by('-viewsAmount')
-			if selected == 'creationDate':
+			if selected == 'pubDate':
 				queryset = Advert.objects.filter(Q(name__icontains = searchQuery) | Q(salary__icontains = searchQuery) | Q(competences__icontains = searchQuery)).order_by('-creationDate')
 	else:
-		queryset = Advert.objects.all().order_by('-creationDate')
+		queryset = Advert.objects.all().order_by('-pubDate')
 
 	context = {
 		'objectList':queryset,
@@ -101,3 +101,7 @@ def vacancyListView(request):
 	}
 	return render(request, "advertList.html", context)
 
+@login_required(login_url = 'login')
+def profileView(request):
+		obj = User.objects.get(username = request.user)
+		return render(request, "profile.html", {'obj' : obj})

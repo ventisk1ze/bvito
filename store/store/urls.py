@@ -22,7 +22,8 @@ urlpatterns = [
     path('register/', views.registration, name = 'reg'),
     path('',views.home,name = 'home'),
     path('profile/', views.profile, name = 'profile'),
-    path('login/', views.login, name = 'login'),
-    path('logout/', views.logout, name = 'logout'),
-    path('vacancy/<int:id>', views.dynamicAdvert, name = 'advert')
+    path('login/', views.loginView, name = 'login'),
+    path('logout/', views.logOut, name = 'logout'),
+    path('advert/<int:id>', views.dynamicAdvert, name = 'advert'),
+    path('advertlist/', views.advertList, name = 'advertlist'),
 ]
