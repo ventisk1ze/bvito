@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-4" id="form-bc">
+      <p class="p-main">Создать аккаунт</p>
+      <form method="POST"> 
+      {% csrf_token %}
+      {{ form.as_p }}
+        <input class="justify-content-center btn btn-primary" type="submit" value="Зарегестрироваться"/>
+      </form>
+    </div>
+  </div>
+</div>
+
+<style>
+#form-bc {  
+  background-color: #fff;
+  border-radius: 5px;
+  margin-top: 150px;
+}
+p {
+  font-size: 24px;
+  text-align: center;
+}
+.p-main {
+  margin-top: 15px;
+}
+p label {
+  font-size: 18px;
+}
+p input {
+  width: 90%;
+}
+p span {
+  font-size: 12px;
+  display: block;
+  margin-top: 5px;
+}
+ul {
+  font-size: 12px;
+}
+.btn {
+  margin-top: 10px;
+  margin-bottom: 15px;
+  width: 90%;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+</style>
+{% endblock %} 

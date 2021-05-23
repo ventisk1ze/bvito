@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container">
+  <div class="row justify-content-center align-content-center">
+    <div class="col-4" id="form-bc">
+      <p class="p-main">Войти и найти работу</p>
+      <form method="POST"> {% csrf_token %}
+      {{ form.as_p }}
+        <input class="justify-content-center btn btn-primary" type="submit" value="Войти"/>
+      {% if request.GET.next %}
+      <input type="hidden" name="next" value = "{{ request.GET.next }}">
+      {% endif %}
+      </form>
+    </div>
+  </div>
+</div>
+
+<style>
+#form-bc {
+  background-color: #fff;
+  border-radius: 5px;
+  margin-top: 200px;
+}
+p {
+  font-size: 24px;
+  text-align: center;
+}
+.p-main {
+  margin-top: 15px;
+}
+p label {
+  font-size: 18px;
+}
+p input {
+  width: 90%;
+}
+.btn {
+  margin-top: 10px;
+  margin-bottom: 15px;
+  width: 90%;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+</style>
+{% endblock%}

@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container">
+	<div class="row justify-content-center">
+		<div class="col-8 update-bc">
+			<p class="p-main">Создание профиля</p>
+
+      <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input class="justify-content-center btn btn-primary" type="submit" value="Сохранить изменения"/>
+      </form>
+		</div>
+	</div>
+</div>
+
+<style>
+.update-bc {
+  background-color: #fff;
+  border-radius: 5px;
+  margin-top: 150px;
+}
+.p-main {
+	font-size: 24px;
+  text-align: left;
+  margin-top: 15px;
+	margin-left: 50px;
+	margin-bottom: 25px;
+}
+form input {
+  margin-bottom: 15px;
+  margin-left: 25px;
+  width: 300px;
+}
+form textarea {
+  width: 300px;
+  height: 100px;
+  resize: none;
+  margin-bottom: 15px;
+  margin-left: 25px;
+}
+form label {
+  display: block;
+  font-size: 18px;
+  margin-left: 35px;
+}
+
+.btn {
+  margin-top: 10px;
+  margin-bottom: 15px;
+  width: 250px;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+</style>
+{% endblock %} 

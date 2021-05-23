@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container ocnt">
+	<div class="row justify-content-center">
+		<p class="col-8 p-main">Каталог вакансий</p>
+		<div class="col-8">
+			<form class="form-inline search-form">
+					{% csrf_token %}
+				<input class="form-control" type="search" placeholder="Поиск вакансии" aria-label="Поиск вакансии" name="search_vlpage">
+					{{ form.as_p }}
+				<button class="btn-outline-success" type="submit">Поиск</button>
+			</form>
+			
+			
+		</div>
+		{% for instance in objectList %}
+		<div class="col-8 listVacancy-bc card">
+			<a class="p-name" href="{{ instance.getAbsoluteUrl }}"> <strong>{{instance.name}}</strong> </a>
+			<p class="p-price">{{ instance.salary }} USD</p>
+
+			<p class="p-comp">Компания: {{ instance.company.name }}	</p>
+			<p class="p-cont">{{ instance.description }}</p>
+			<p class="p-cont">{{ instance.competences }}</p>
+		</div>
+		{% endfor %}
+	</div>
+</div>
+
+<style>
+.ocnt {
+	margin-top: 50px;
+}
+.listVacancy-bc {
+  background-color: #fff;
+  border-radius: 5px;
+  margin-top: 15px;
+	display: grid;
+	grid-template-columns: 1fr 300px;
+}
+.p-main {
+	font-size: 28px;
+  text-align: left;
+  margin-top: 15px;
+	margin-left: 100px;
+	margin-bottom: 15px;
+}
+.p-name {
+	font-size: 28px;
+  text-align: left;
+	text-decoration: none;
+  margin-top: 15px;
+	margin-left: 100px;
+	margin-bottom: 15px;
+}
+.p-comp {
+	font-size: 18px;
+  text-align: left;
+  margin-top: 0px;
+	margin-left: 50px;
+	margin-bottom: 15px;
+}
+.p-price {
+	grid-row: span 3;
+	align-self: center;
+	font-size: 28px;
+	text-align: left;
+  margin-top: 10px;
+	margin-left: 50px;
+	margin-bottom: 25px;
+}
+.p-cont {
+	font-size: 18px;
+	text-align: left;
+  margin-top: 5px;
+	margin-left: 50px;
+}
+.custom-control {
+	display: inline-block;
+	margin-right: 50px;
+}
+{% comment %} .sort-form {
+	display: inline;
+}
+.sort-form button {
+	margin-top: 10px;
+  margin-bottom: 15px;
+	border-radius: .25rem;
+	border: 1px solid transparent;
+	border-color: #198754;
+} {% endcomment %}
+</style>
+{% endblock %}

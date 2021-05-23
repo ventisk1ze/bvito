@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+	<div class="row justify-content-center">
+		<div class="col-8 vacancy-bc">
+			<p class="p-name"><strong>{{ obj.name }}</strong></p>
+			<p class="p-comp">Город: {{ obj.city }}</p>
+			<p class="p-price">{{ obj.salary }} USD</p>
+			<p class="p-desc">Цена:</p>
+			<p class="p-cont">{{ obj.price }}</p>
+			<p class="p-desc">Автор:</p>
+			<p class="p-cont">{{ obj.description }}</p>
+			<p class="p-desc">Просмотры:</p>
+			<p class="p-cont">{{ obj.viewsAmount }}</p>
+			<p class="p-desc">Дата добавления (UTC):</p>
+			<p class="p-cont">{{ obj.pubDate }}</p>
+			<p class="p-desc">Телефон: </p>
+			<p class="p-cont">{{ obj.phoneNumber }}</p>
+		</div>
+	</div>
+</div>
+
+<style>
+.vacancy-bc {
+  background-color: #fff;
+  border-radius: 5px;
+  margin-top: 150px;
+}
+.p-name {
+	font-size: 28px;
+  text-align: center;
+  margin-top: 15px;
+	{% comment %} margin-left: 100px; {% endcomment %}
+	margin-bottom: 15px;
+}
+.p-comp {
+	font-size: 18px;
+  text-align: left;
+  margin-top: 0px;
+	margin-left: 50px;
+	margin-bottom: 15px;
+}
+.p-price {
+	font-size: 28px;
+	text-align: left;
+  margin-top: 10px;
+	margin-left: 50px;
+	margin-bottom: 25px;
+}
+.p-desc {
+	font-size: 16px;
+  text-align: left;
+  margin-top: 0px;
+	margin-left: 75px;
+	margin-bottom: 5px;
+}
+.p-cont {
+	font-size: 24px;
+	text-align: left;
+  margin-top: 5px;
+	margin-left: 50px;
+}
+
+
+.btn {
+  margin-top: 10px;
+  margin-bottom: 15px;
+  width: 250px;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+</style>
+{% endblock %}

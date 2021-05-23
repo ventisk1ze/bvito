@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container">
+	<div class="row justify-content-center">
+		<div class="col-8 profile-bc">
+			<p class="p-main">Мой профиль</p>
+			<div class="desc">
+				<div class="p-name">
+					Имя
+				</div>
+				<div class="p-desc">
+					{{ obj.name }}
+				</div>
+			</div>
+			<div class="desc">
+				<div class="p-name">
+				Дата рождения
+				</div>
+				<div class="p-desc">
+					{{ obj.dob }}
+				</div>
+			</div>
+			<div class="desc">
+				<div class="p-name">
+				Почта
+				</div>
+				<div class="p-desc">
+					{{ obj.email }}
+				</div>
+			</div>
+			<div class="desc">
+				<div class="p-name">
+				 Обо мне
+				</div>
+				<div class="p-desc">
+					{{ obj.description }}
+				</div>
+			</div>
+			  <form action="{% url 'ProfileUpdate' %}">
+					<button class="justify-content-center btn btn-primary" type="submit">Изменить профиль</button>
+				</form>
+		</div>
+	</div>
+</div>
+
+
+<style>
+.profile-bc {
+  background-color: #fff;
+  border-radius: 5px;
+  margin-top: 150px;
+}
+.p-main {
+	font-size: 24px;
+  text-align: left;
+  margin-top: 15px;
+	margin-left: 50px;
+	margin-bottom: 25px;
+}
+.desc {
+	margin-left: 25px;
+	margin-bottom: 15px;
+}
+.p-name {
+	font-size: 16px;
+}
+.p-desc {
+	font-size: 22px;
+}
+
+.btn {
+  margin-top: 10px;
+  margin-bottom: 15px;
+  width: 250px;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+</style>
+{% endblock %}
