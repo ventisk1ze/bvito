@@ -56,7 +56,7 @@ def advertAdd(request):
     else:
         form = AdvertAddForm()
     context = {'form':form}
-    return render(request,'advert.html',context)
+    return render(request,'advertAdd.html',context)
 
 @login_required(login_url = 'login')
 def dynamicAdvert(request, id):
