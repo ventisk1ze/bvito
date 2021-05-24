@@ -11,4 +11,4 @@ class Advert(models.Model):
     featured = models.BooleanField(null = True)
     viewsAmount = models.IntegerField(default = 0)
     def getAbsoluteUrl(self):
-        return f"/vacancy/{self.id}/"
+        return f"/advert/{self.id}/"

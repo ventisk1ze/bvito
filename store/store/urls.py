@@ -25,7 +25,7 @@ urlpatterns = [
     path('profile/', views.profile, name = 'profile'),
     path('login/', views.loginView, name = 'login'),
     path('logout/', views.logOut, name = 'logout'),
-    path('advert/<int:id>', views.dynamicAdvert, name = 'advert'),
+    path('advert/<int:id>/', views.dynamicAdvert, name = 'advert'),
     path('advertlist/', views.advertList, name = 'advertlist'),
     path('advertadd/', views.advertAdd, name = 'advertadd'),
 ]

@@ -80,7 +80,7 @@ def advertList(request):
 	searchQueryVLpage = request.GET.get('search_vlpage', '')
 
 	form = sortChoice(request.GET or request.POST)
-
+	#print(form.is_valid())
 	if searchQueryNavbar or searchQueryVLpage:
 		if searchQueryNavbar:
 			searchQuery = searchQueryNavbar
@@ -89,9 +89,9 @@ def advertList(request):
 		if form.is_valid():
 			selected = form.cleaned_data.get("choice")
 			if selected == 'viewsAmount':
-				queryset = Advert.objects.filter(Q(name__icontains = searchQuery) | Q(salary__icontains = searchQuery) | Q(competences__icontains = searchQuery)).order_by('-viewsAmount')
-			if selected == 'pubDate':
-				queryset = Advert.objects.filter(Q(name__icontains = searchQuery) | Q(salary__icontains = searchQuery) | Q(competences__icontains = searchQuery)).order_by('-creationDate')
+				queryset = Advert.objects.filter(name__icontains = searchQuery).order_by('-viewsAmount')
+			else:
+				queryset = Advert.objects.filter(name__icontains = searchQuery).order_by('-pubDate')
 	else:
 		queryset = Advert.objects.all().order_by('-pubDate')
 
