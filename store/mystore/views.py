@@ -72,7 +72,9 @@ def dynamicAdvert(request, id):
 
 
 def home(request):
-    return render(request, "home.html")
+	queryList = Advert.objects.filter(featured = True)
+	print(queryList)
+	return render(request, "home.html",{'queryList':queryList})
 
 @login_required(login_url = 'login')
 def advertList(request):
