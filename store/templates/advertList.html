@@ -18,11 +18,11 @@
 		{% for instance in objectList %}
 		<div class="col-8 listVacancy-bc card">
 			<a class="p-name" href="{{ instance.getAbsoluteUrl }}"> <strong>{{instance.name}}</strong> </a>
-			<p class="p-price">{{ instance.salary }} USD</p>
+			<p class="p-price">{{ instance.price }} USD</p>
 
-			<p class="p-comp">Компания: {{ instance.company.name }}	</p>
-			<p class="p-cont">{{ instance.description }}</p>
-			<p class="p-cont">{{ instance.competences }}</p>
+			<p class="p-comp">Автор: {{ instance.posterName }}	</p>
+			<p class="p-cont">{{ instance.phoneNumber }}</p>
+			<p class="p-cont">{{ instance.city }}</p>
 		</div>
 		{% endfor %}
 	</div>
